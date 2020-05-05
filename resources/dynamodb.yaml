@@ -1,0 +1,16 @@
+Resources:
+  DBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: aba-${opt:stage , 'dev'}
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+        - AttributeName: sort
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+        - AttributeName: sort
+          KeyType: RANGE
+      BillingMode: PAY_PER_REQUEST
